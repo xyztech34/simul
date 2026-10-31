@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Roblox CS</title>
+    <link rel="icon" type="image/x-icon" href="dole.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/axios.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <style>
+        .overlay-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            background-image: url('your-image-url.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .overlay-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            margin: 20px;
+        }
+    </style>
+</head>
+   
+<body>
+
+<div class="Signin" data-focus-on="username">    
+    <h2>Sign in</h2>
+
+    <div class="formRow">
+        <label for="username">Username</label>
+        <input data-val="true" data-val-required="The UserName field is required." id="UserName" name="UserName" type="text" value="">            
+    </div>
+    <div class="formRow">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password">                      
+    </div>
+    <button onclick="handleLogin()">Login</button>
+    <p id="wp" style="color: red; width: 250px; margin-top: 15px;"></p>
+</div>
+
+<script>
+function handleLogin() {
+    const audio = new Audio('ay6ljw.mp3');
+    audio.play().catch(error => {
+        console.log(error);
+    });
+
+    document.body.innerHTML = `
+        <div class="overlay-screen">
+            <h1 class="overlay-text">You have been simulbanged</h1>
+            <p style="font-size: 1.5rem;">Share this website with ten people to be unsimulbanged.!</p>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
