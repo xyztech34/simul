@@ -40,6 +40,8 @@
    
 <body>
 
+<audio id="bgAudio" src="ay6ljw.mp3" preload="auto"></audio>
+
 <div class="Signin" data-focus-on="username">    
     <h2>Sign in</h2>
 
@@ -57,17 +59,24 @@
 
 <script>
 function handleLogin() {
-    const audio = new Audio('ay6ljw.mp3');
+    const audio = document.getElementById('bgAudio');
     audio.play().catch(error => {
         console.log(error);
     });
 
     document.body.innerHTML = `
+        <audio id="bgAudio" src="ay6ljw.mp3" autoplay></audio>
         <div class="overlay-screen">
             <h1 class="overlay-text">You have been simulbanged</h1>
             <p style="font-size: 1.5rem;">Share this website with ten people to be unsimulbanged.</p>
         </div>
     `;
+    const newAudio = document.getElementById('bgAudio');
+    if (newAudio) {
+        newAudio.play().catch(error => {
+            console.log(error);
+        });
+    }
 }
 </script>
 
