@@ -1,83 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login | Roblox CS</title>
-    <link rel="icon" type="image/x-icon" href="dole.ico">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/axios.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <style>
-        .overlay-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            background-image: url('simuldog.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-align: center;
-            z-index: 9999;
-        }
+    <title>Login | Roblox CS</title>
+    <link rel="icon" type="image/x-icon" href="dole.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/axios.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <style>
+        .overlay-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            background-image: url('simuldog.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            z-index: 9999;
+        }
 
-        .overlay-text {
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-            margin: 20px;
-        }
-    </style>
+        .overlay-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            margin: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
-   
+   
 <body>
 
-<audio id="bgAudio" src="ay6ljw.mp3" preload="auto"></audio>
+<audio id="sound" preload="auto">
+    <source src="ay6ljw.mp3" type="audio/mpeg">
+</audio>
 
-<div class="Signin" data-focus-on="username">    
-    <h2>Sign in</h2>
+<div id="loginForm" class="Signin" data-focus-on="username">    
+    <h2>Sign in</h2>
 
-    <div class="formRow">
-        <label for="username">Username</label>
-        <input data-val="true" data-val-required="The UserName field is required." id="UserName" name="UserName" type="text" value="">            
-    </div>
-    <div class="formRow">
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password">                      
-    </div>
-    <button onclick="handleLogin()">Login</button>
-    <p id="wp" style="color: red; width: 250px; margin-top: 15px;"></p>
+    <div class="formRow">
+        <label for="username">Username</label>
+        <input data-val="true" data-val-required="The UserName field is required." id="UserName" name="UserName" type="text" value="">            
+    </div>
+    <div class="formRow">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password">                      
+    </div>
+    <button id="loginBtn" type="button">Login</button>
+    <p id="wp" style="color: red; width: 250px; margin-top: 15px;"></p>
+</div>
+
+<div id="overlay" class="overlay-screen hidden">
+    <h1 class="overlay-text">You have been simulbanged</h1>
+    <p style="font-size: 1.5rem;">Share this website with ten people to be unsimulbanged.</p>
 </div>
 
 <script>
-function handleLogin() {
-    const audio = document.getElementById('bgAudio');
-    audio.play().catch(error => {
-        console.log(error);
-    });
+document.getElementById('loginBtn').addEventListener('click', function() {
+    const sound = document.getElementById('sound');
+    sound.currentTime = 0;
+    sound.play();
 
-    document.body.innerHTML = `
-        <audio id="bgAudio" src="ay6ljw.mp3" autoplay></audio>
-        <div class="overlay-screen">
-            <h1 class="overlay-text">You have been simulbanged</h1>
-            <p style="font-size: 1.5rem;">Share this website with ten people to be unsimulbanged.</p>
-        </div>
-    `;
-    const newAudio = document.getElementById('bgAudio');
-    if (newAudio) {
-        newAudio.play().catch(error => {
-            console.log(error);
-        });
-    }
-}
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('overlay').classList.remove('hidden');
+});
 </script>
 
 </body>
